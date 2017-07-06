@@ -39,13 +39,11 @@ public abstract class ReactBaseFragment  extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-
-
-        mReactRootView = new ReactRootView(context);
-        mReactInstanceManager =
-                ((BaseApplication) getActivity().getApplication())
-                        .getBaseReactNativeHost()
-                        .getReactInstanceManager();
+//        mReactRootView = new ReactRootView(context);
+//        mReactInstanceManager =
+//                ((BaseApplication) getActivity().getApplication())
+//                        .getReactNativeHost()
+//                        .getReactInstanceManager();
 
     }
 
@@ -53,6 +51,12 @@ public abstract class ReactBaseFragment  extends Fragment {
     @Override
     public ReactRootView onCreateView(LayoutInflater inflater, ViewGroup group, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mReactRootView = new ReactRootView(((BaseApplication) getActivity().getApplication())
+                .getApplicationContext());
+        mReactInstanceManager =
+                ((BaseApplication) getActivity().getApplication())
+                        .getReactNativeHost()
+                        .getReactInstanceManager();
         return mReactRootView;
     }
 
@@ -60,36 +64,37 @@ public abstract class ReactBaseFragment  extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        if (mReactRootView == null) {
-            mReactRootView = new ReactRootView(((BaseApplication) getActivity().getApplication()).getBaseContext());
-        }
-        if (mReactRootView == null) {
-            Log.d("ReactBaseFragment", "ReactRootView: null");
-        }
-        mReactInstanceManager =
-                ((BaseApplication) getActivity().getApplication())
-                        .getBaseReactNativeHost()
-                        .getReactInstanceManager();
 
-        if (mReactInstanceManager == null) {
-            Log.d("ReactBaseFragment", "ReactInstanceManager: null");
-        }
-        mReactRootView.startReactApplication(
-                mReactInstanceManager,
-                getMainComponentName(),
-                null
-        );
-        findViews();
-//        try {
-//            mReactRootView.startReactApplication(
-//                    mReactInstanceManager,
-//                    getMainComponentName(),
-//                    null
-//            );
-//            findViews();
-//        } catch (Exception e) {
-//            Log.d("mReactRootView", "onActivityCreated: Cannot start react application");
-//        }
+//         if (mReactRootView == null) {
+//             mReactRootView = new ReactRootView(((BaseApplication) getActivity().getApplication()).getBaseContext());
+//         }
+//         if (mReactRootView == null) {
+//             Log.d("ReactBaseFragment", "ReactRootView: null");
+//         }
+//         mReactInstanceManager =
+//                 ((BaseApplication) getActivity().getApplication())
+//                         .getReactNativeHost()
+//                         .getReactInstanceManager();
+//
+//         if (mReactInstanceManager == null) {
+//             Log.d("ReactBaseFragment", "ReactInstanceManager: null");
+//         }
+         mReactRootView.startReactApplication(
+                 mReactInstanceManager,
+                 getMainComponentName(),
+                 null
+         );
+//         findViews();
+//       try {
+//           mReactRootView.startReactApplication(
+//                   mReactInstanceManager,
+//                   getMainComponentName(),
+//                   null
+//           );
+//           findViews();
+//       } catch (Exception e) {
+//           Log.d("mReactRootView", "onActivityCreated: Cannot start react application");
+//       }
     }
 
     private void findViews() {

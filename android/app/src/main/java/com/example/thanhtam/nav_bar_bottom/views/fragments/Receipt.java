@@ -13,4 +13,5 @@ public class Receipt extends ReactBaseFragment {
     }
 
 
+
 }

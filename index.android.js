@@ -11,9 +11,36 @@ import {
   Text,
   View
 } from 'react-native';
+import Modal from "react-native-modalbox";
+import ProgressBar from "./src/loaders/ProgressBar.android";
+
+var codePush = require('react-native-code-push');
+
 
 export class Receipt extends Component {
+
+    constructor(props) {
+    super(props);
+    this.state = {
+      showDownloadingModal: false,
+      showInstalling: false,
+      downloadProgress: 0
+    };
+  }
+
+   componentDidMount() {
+     var updateDialogOptions = {
+        updateTitle: "Update event mới nào",
+        optionalUpdateMessage: "Update nào",
+        optionalIgnoreButtonLabel: "Không update",
+        optionalInstallButtonLabel: "Ok",
+    };
+
+    codePush.sync(
+      { installMode: codePush.InstallMode.IMMEDIATE });
+  }
   render() {
+
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
@@ -32,7 +59,29 @@ export class Receipt extends Component {
 }
 
 export class Promotion extends Component {
+
+    constructor(props) {
+    super(props);
+    this.state = {
+      showDownloadingModal: false,
+      showInstalling: false,
+      downloadProgress: 0
+    };
+  }
+
+   componentDidMount() {
+     var updateDialogOptions = {
+        updateTitle: "Update event mới nào",
+        optionalUpdateMessage: "Update nào",
+        optionalIgnoreButtonLabel: "Không update",
+        optionalInstallButtonLabel: "Ok",
+    };
+
+    codePush.sync(
+      { installMode: codePush.InstallMode.IMMEDIATE });
+  }
   render() {
+
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
@@ -49,6 +98,7 @@ export class Promotion extends Component {
     );
   }
 }
+
 
 const styles = StyleSheet.create({
   container: {
@@ -71,4 +121,5 @@ const styles = StyleSheet.create({
 
 AppRegistry.registerComponent('Receipt', () => Receipt);
 AppRegistry.registerComponent('Promotion', () => Promotion);
+
 

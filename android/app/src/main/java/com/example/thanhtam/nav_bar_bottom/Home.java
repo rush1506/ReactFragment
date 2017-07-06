@@ -36,6 +36,10 @@ public class Home extends BaseActivity
                             .add(R.id.content, receiptFragment).commit();
                     return true;
                 case R.id.promotion:
+
+//                    Fragment receiptFragment = new Receipt();
+//                    getFragmentManager().beginTransaction()
+//                            .add(R.id.content, receiptFragment).commit();
                     Fragment promotionFragment = new Promotion();
                     getFragmentManager().beginTransaction()
                             .add(R.id.content, promotionFragment).commit();
@@ -69,10 +73,11 @@ public class Home extends BaseActivity
 
     private void findViews() {
         viewHolder = new ViewHolder();
-//        ((BaseApplication) getApplication()).getBaseReactNativeHost().setContext(getContext());
-//        ((BaseApplication) getApplication()).getBaseReactNativeHost().setReactBundleUrl("https://drive.google.com/uc?export=download&id=0Bzu2ulcPXMYmallzTjFqV0VvcUk");
         mReactInstanceManager =
-                ((BaseApplication) getApplication()).getBaseReactNativeHost().getReactInstanceManager();
+                ((BaseApplication) getApplication()).getReactNativeHost().getReactInstanceManager();
+//        Fragment receiptFragment = new Receipt();
+//        getFragmentManager().beginTransaction()
+//                .add(R.id.content, receiptFragment).commit();
         viewHolder.navigation = (BottomNavigationView) findViewById(R.id.navigation);
     }
 

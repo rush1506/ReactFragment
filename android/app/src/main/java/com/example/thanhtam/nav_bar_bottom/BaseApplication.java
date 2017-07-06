@@ -1,56 +1,53 @@
 package com.example.thanhtam.nav_bar_bottom;
 
 import android.app.Application;
-import android.content.Context;
 
-import com.example.thanhtam.nav_bar_bottom.Utils.ReactFragment.BaseReactNativeHost;
-import com.example.thanhtam.nav_bar_bottom.Utils.ReactFragment.ReactBaseApplication;
 import com.facebook.react.ReactApplication;
-import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
+import com.microsoft.codepush.react.CodePush;
 
 import java.util.Arrays;
 import java.util.List;
-
-import javax.annotation.Nullable;
 
 /**
  * Created by thanhtam on 05/07/2017.
  */
 
-public class BaseApplication extends Application implements ReactBaseApplication {
+public class BaseApplication extends Application implements ReactApplication {
 
-    private static Context context;
+    private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
 
-    public void onCreate() {
-        super.onCreate();
-        BaseApplication.context = getApplicationContext();
-        mBaseReactNativeHost = new BaseReactNativeHost(this, context, url) {
-            @Override
-            public boolean getUseDeveloperSupport() {
-                return BuildConfig.DEBUG;
-            }
-
-            @Override
-            public List<ReactPackage> getPackages() {
-                return Arrays.<ReactPackage>asList(
-                        new MainReactPackage()
-                );
-            }
-        };
-    }
-
-    public static Context getAppContext() {
-        return BaseApplication.context;
-    }
-//    private Context context = getApplicationContext();
-    private String url = "https://drive.google.com/uc?export=download&id=0Bzu2ulcPXMYmallzTjFqV0VvcUk";
-    private BaseReactNativeHost mBaseReactNativeHost = null;
     @Override
-    public BaseReactNativeHost getBaseReactNativeHost() {
-        return mBaseReactNativeHost;
+    protected String getJSBundleFile() {
+      return CodePush.getJSBundleFile();
     }
+
+    @Override
+    public boolean getUseDeveloperSupport() {
+      return BuildConfig.DEBUG;
+    }
+
+    @Override
+    protected List<ReactPackage> getPackages() {
+      return Arrays.<ReactPackage>asList(
+          new MainReactPackage(),
+            new CodePush("iJrB6zqAXoDvSoaRB63FL2ITyqHsa0a54359-d62b-4e63-92bc-c307f1c17628"
+            , getApplicationContext(), BuildConfig.DEBUG)
+      );
+    }
+  };
+
+  @Override
+  public ReactNativeHost getReactNativeHost() {
+    return mReactNativeHost;
+  }
+
+  @Override
+  public void onCreate() {
+    super.onCreate();
+    SoLoader.init(this, /* native exopackage */ false);
+  }
 }
