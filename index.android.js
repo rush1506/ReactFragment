@@ -37,14 +37,15 @@ export class Receipt extends Component {
     };
 
     codePush.sync(
-      { installMode: codePush.InstallMode.IMMEDIATE });
+      { updateDialog: updateDialogOptions,
+        installMode: codePush.InstallMode.IMMEDIATE });
   }
   render() {
 
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Receipt
+          Hóa đơn
         </Text>
         <Text style={styles.instructions}>
           To get started, edit index.android.js
@@ -78,14 +79,15 @@ export class Promotion extends Component {
     };
 
     codePush.sync(
-      { installMode: codePush.InstallMode.IMMEDIATE });
+      { updateDialog: updateDialogOptions,
+        installMode: codePush.InstallMode.IMMEDIATE });
   }
   render() {
 
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Promotion
+          Khuyến mãi
         </Text>
         <Text style={styles.instructions}>
           To get started, edit index.android.js
