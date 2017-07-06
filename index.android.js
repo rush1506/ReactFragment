@@ -9,7 +9,9 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Button,
+  Image
 } from 'react-native';
 import Modal from "react-native-modalbox";
 import ProgressBar from "./src/loaders/ProgressBar.android";
@@ -54,6 +56,10 @@ export class Receipt extends Component {
           Double tap R on your keyboard to reload,{'\n'}
           Shake or press menu button for dev menu
         </Text>
+        <Button
+          title="Learn More"
+          color="#841584"
+        />
       </View>
     );
   }
@@ -96,6 +102,13 @@ export class Promotion extends Component {
           Double tap R on your keyboard to reload,{'\n'}
           Shake or press menu button for dev menu
         </Text>
+        <Image
+          source={require('./images/bach-luyen-thanh-than.jpg')}
+        />
+        <Image
+          style={{width: 50, height: 50}}
+          source={{uri: 'https://facebook.github.io/react/img/logo_og.png'}}
+        />
       </View>
     );
   }
@@ -103,6 +116,18 @@ export class Promotion extends Component {
 
 
 const styles = StyleSheet.create({
+  container_modal: {
+    flex: 1,
+    width: null,
+    height: null
+  },
+  modal: {
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  modal1: {
+    height: 300
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -118,7 +143,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#333333',
     marginBottom: 5,
-  },
+  }
 });
 
 AppRegistry.registerComponent('Receipt', () => Receipt);
