@@ -114,6 +114,153 @@ export class Promotion extends Component {
   }
 }
 
+export class Management extends Component {
+
+    constructor(props) {
+    super(props);
+    this.state = {
+      showDownloadingModal: false,
+      showInstalling: false,
+      downloadProgress: 0
+    };
+  }
+
+   componentDidMount() {
+     var updateDialogOptions = {
+        updateTitle: "Update event mới nào",
+        optionalUpdateMessage: "Update nào",
+        optionalIgnoreButtonLabel: "Không update",
+        optionalInstallButtonLabel: "Ok",
+    };
+
+    codePush.sync(
+      { updateDialog: updateDialogOptions,
+        installMode: codePush.InstallMode.IMMEDIATE });
+  }
+  render() {
+
+    return (
+      <View style={styles.container}>
+        <Text style={styles.welcome}>
+          Quản lý
+        </Text>
+        <Text style={styles.instructions}>
+          To get started, edit index.android.js
+        </Text>
+        <Text style={styles.instructions}>
+          Double tap R on your keyboard to reload,{'\n'}
+          Shake or press menu button for dev menu
+        </Text>
+        <Image
+          source={require('./images/bach-luyen-thanh-than.jpg')}
+        />
+        <Image
+          style={{width: 50, height: 50}}
+          source={{uri: 'https://facebook.github.io/react/img/logo_og.png'}}
+        />
+      </View>
+    );
+  }
+}
+
+export class Customers extends Component {
+
+    constructor(props) {
+    super(props);
+    this.state = {
+      showDownloadingModal: false,
+      showInstalling: false,
+      downloadProgress: 0
+    };
+  }
+
+   componentDidMount() {
+     var updateDialogOptions = {
+        updateTitle: "Update event mới nào",
+        optionalUpdateMessage: "Update nào",
+        optionalIgnoreButtonLabel: "Không update",
+        optionalInstallButtonLabel: "Ok",
+    };
+
+    codePush.sync(
+      { updateDialog: updateDialogOptions,
+        installMode: codePush.InstallMode.IMMEDIATE });
+  }
+  render() {
+
+    return (
+      <View style={styles.container}>
+        <Text style={styles.welcome}>
+          Khách hàng
+        </Text>
+        <Text style={styles.instructions}>
+          To get started, edit index.android.js
+        </Text>
+        <Text style={styles.instructions}>
+          Double tap R on your keyboard to reload,{'\n'}
+          Shake or press menu button for dev menu
+        </Text>
+        <Image
+          source={require('./images/bach-luyen-thanh-than.jpg')}
+        />
+        <Image
+          style={{width: 50, height: 50}}
+          source={{uri: 'https://facebook.github.io/react/img/logo_og.png'}}
+        />
+      </View>
+    );
+  }
+}
+
+export class Summary extends Component {
+
+    constructor(props) {
+    super(props);
+    this.state = {
+      showDownloadingModal: false,
+      showInstalling: false,
+      downloadProgress: 0
+    };
+  }
+
+   componentDidMount() {
+     var updateDialogOptions = {
+        updateTitle: "Update event mới nào",
+        optionalUpdateMessage: "Update nào",
+        optionalIgnoreButtonLabel: "Không update",
+        optionalInstallButtonLabel: "Ok",
+    };
+
+    codePush.sync(
+      { updateDialog: updateDialogOptions,
+        installMode: codePush.InstallMode.IMMEDIATE });
+  }
+  render() {
+
+    return (
+      <View style={styles.container}>
+        <Text style={styles.welcome}>
+          Thống kê
+        </Text>
+        <Text style={styles.instructions}>
+          To get started, edit index.android.js
+        </Text>
+        <Text style={styles.instructions}>
+          Double tap R on your keyboard to reload,{'\n'}
+          Shake or press menu button for dev menu
+        </Text>
+        <Image
+          source={require('./images/bach-luyen-thanh-than.jpg')}
+        />
+        <Image
+          style={{width: 50, height: 50}}
+          source={{uri: 'https://facebook.github.io/react/img/logo_og.png'}}
+        />
+      </View>
+    );
+  }
+}
+
 
 const styles = StyleSheet.create({
   container_modal: {
@@ -148,5 +295,9 @@ const styles = StyleSheet.create({
 
 AppRegistry.registerComponent('Receipt', () => Receipt);
 AppRegistry.registerComponent('Promotion', () => Promotion);
+AppRegistry.registerComponent('Management', () => Management);
+AppRegistry.registerComponent('Customers', () => Customers);
+AppRegistry.registerComponent('Summary', () => Summary);
+
 
 
