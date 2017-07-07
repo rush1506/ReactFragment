@@ -6,9 +6,9 @@ import com.example.thanhtam.nav_bar_bottom.Utils.ReactFragment.ReactBaseFragment
  * Created by thanhtam on 05/07/2017.
  */
 
-public class Receipt extends ReactBaseFragment {
+public class Customers extends ReactBaseFragment {
     @Override
     public String getMainComponentName() {
-        return "Receipt";
+        return "Customers";
     }
 }

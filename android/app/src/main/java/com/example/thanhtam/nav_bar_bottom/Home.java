@@ -8,8 +8,11 @@ import android.view.MenuItem;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.example.thanhtam.nav_bar_bottom.views.fragments.Customers;
+import com.example.thanhtam.nav_bar_bottom.views.fragments.Management;
 import com.example.thanhtam.nav_bar_bottom.views.fragments.Promotion;
 import com.example.thanhtam.nav_bar_bottom.views.fragments.Receipt;
+import com.example.thanhtam.nav_bar_bottom.views.fragments.Summary;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 
@@ -41,10 +44,19 @@ public class Home extends BaseActivity
                             .add(R.id.content, promotionFragment).commit();
                     return true;
                 case R.id.cutomers:
+                    Fragment customersFragment = new Customers();
+                    getFragmentManager().beginTransaction()
+                            .add(R.id.content, customersFragment).commit();
                     return true;
                 case R.id.summary:
+                    Fragment summaryFragment = new Summary();
+                    getFragmentManager().beginTransaction()
+                            .add(R.id.content, summaryFragment).commit();
                     return true;
                 case R.id.management:
+                    Fragment managementFragment = new Management();
+                    getFragmentManager().beginTransaction()
+                            .add(R.id.content, managementFragment).commit();
                     return true;
             }
             return false;
@@ -62,6 +74,7 @@ public class Home extends BaseActivity
     }
 
     private void initViews() {
+        createHomeFragment();
         viewHolder.content = (FrameLayout) findViewById(R.id.content);
         viewHolder.navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
@@ -69,10 +82,8 @@ public class Home extends BaseActivity
 
     private void findViews() {
         viewHolder = new ViewHolder();
-//        ((BaseApplication) getApplication()).getBaseReactNativeHost().setContext(getContext());
-//        ((BaseApplication) getApplication()).getBaseReactNativeHost().setReactBundleUrl("https://drive.google.com/uc?export=download&id=0Bzu2ulcPXMYmallzTjFqV0VvcUk");
         mReactInstanceManager =
-                ((BaseApplication) getApplication()).getBaseReactNativeHost().getReactInstanceManager();
+                ((BaseApplication) getApplication()).getReactNativeHost().getReactInstanceManager();
         viewHolder.navigation = (BottomNavigationView) findViewById(R.id.navigation);
     }
 
@@ -90,6 +101,15 @@ public class Home extends BaseActivity
      * Any activity that uses the ReactFragment or ReactActivty
      * Needs to call onHostPause() on the ReactInstanceManager
      */
+
+    private void createHomeFragment() {
+        /*This function is used on first start up,
+        for some reason it takes a couple of second for react to load into a fragment,
+        we would not want users thinking that they're experiencing bugs*/
+        Fragment receiptFragment = new Receipt();
+        getFragmentManager().beginTransaction()
+                .add(R.id.content, receiptFragment).commit();
+    }
     @Override
     protected void onPause() {
         super.onPause();
