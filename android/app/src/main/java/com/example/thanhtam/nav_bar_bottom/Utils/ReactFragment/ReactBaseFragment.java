@@ -1,30 +1,17 @@
 package com.example.thanhtam.nav_bar_bottom.Utils.ReactFragment;
 
-import android.app.Application;
 import android.app.Fragment;
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.cboy.rn.splashscreen.SplashScreen;
 import com.example.thanhtam.nav_bar_bottom.BaseApplication;
-import com.facebook.react.BuildConfig;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactRootView;
-import com.facebook.react.common.LifecycleState;
-import com.facebook.react.shell.MainReactPackage;
-import com.koushikdutta.async.future.FutureCallback;
-import com.koushikdutta.ion.Ion;
-
-import java.io.File;
-
-import static android.content.ContentValues.TAG;
 
 /**
  * Created by thanhtam on 05/07/2017.
