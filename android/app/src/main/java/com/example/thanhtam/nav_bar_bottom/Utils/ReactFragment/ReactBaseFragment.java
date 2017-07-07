@@ -1,4 +1,4 @@
-package com.example.thanhtam.nav_bar_bottom.views.fragments;
+package com.example.thanhtam.nav_bar_bottom.Utils.ReactFragment;
 
 import android.app.Application;
 import android.app.Fragment;
@@ -40,19 +40,14 @@ public abstract class ReactBaseFragment  extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-//        mReactRootView = new ReactRootView(context);
-//        mReactInstanceManager =
-//                ((BaseApplication) getActivity().getApplication())
-//                        .getReactNativeHost()
-//                        .getReactInstanceManager();
-
     }
 
 
     @Override
     public ReactRootView onCreateView(LayoutInflater inflater, ViewGroup group, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        SplashScreen.show(getActivity());  // here
+//        SplashScreen.show(getActivity());  // Uncomment this if you want every fragment to show loading screen
+        //Create ReactRootView the magic component
         mReactRootView = new ReactRootView(((BaseApplication) getActivity().getApplication())
                 .getApplicationContext());
         mReactInstanceManager =
@@ -66,27 +61,6 @@ public abstract class ReactBaseFragment  extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-//         if (mReactRootView == null) {
-//             mReactRootView = new ReactRootView(((BaseApplication) getActivity().getApplication()).getBaseContext());
-//         }
-//         if (mReactRootView == null) {
-//             Log.d("ReactBaseFragment", "ReactRootView: null");
-//         }
-//         mReactInstanceManager =
-//                 ((BaseApplication) getActivity().getApplication())
-//                         .getReactNativeHost()
-//                         .getReactInstanceManager();
-//
-//         if (mReactInstanceManager == null) {
-//             Log.d("ReactBaseFragment", "ReactInstanceManager: null");
-//         }
-//         mReactRootView.startReactApplication(
-//                 mReactInstanceManager,
-//                 getMainComponentName(),
-//                 null
-//         );
-//         findViews();
        try {
            mReactRootView.startReactApplication(
                    mReactInstanceManager,
@@ -94,8 +68,8 @@ public abstract class ReactBaseFragment  extends Fragment {
                    null
            );
            findViews();
-       } catch (Exception e) {
-           Log.d("mReactRootView", "onActivityCreated: Cannot start react application");
+       } catch (NullPointerException e) {
+           Log.d("ReactBaseFragment", "ReactRootView or ReactInstanceManager is null");
        }
     }
 
@@ -106,7 +80,7 @@ public abstract class ReactBaseFragment  extends Fragment {
 //                        Uri.parse("package:" + getPackageName()));
 //                startActivityForResult(intent, OVERLAY_PERMISSION_REQ_CODE);
 //            }
-            //cry
+            Log.d("ReactBaseFragment", "Version M");
         }
     }
 }

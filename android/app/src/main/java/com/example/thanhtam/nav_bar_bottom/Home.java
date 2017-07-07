@@ -41,10 +41,6 @@ public class Home extends BaseActivity
                             .add(R.id.content, receiptFragment).commit();
                     return true;
                 case R.id.promotion:
-
-//                    Fragment receiptFragment = new Receipt();
-//                    getFragmentManager().beginTransaction()
-//                            .add(R.id.content, receiptFragment).commit();
                     Fragment promotionFragment = new Promotion();
                     getFragmentManager().beginTransaction()
                             .add(R.id.content, promotionFragment).commit();
@@ -87,6 +83,9 @@ public class Home extends BaseActivity
     }
 
     private void createHomeFragment() {
+        /*This function is used on first start up,
+        for some reason it takes a couple of second for react to load into a fragment,
+        we would not want users thinking that they're experiencing bugs*/
         SplashScreen.show((Activity) Home.this);
         Fragment receiptFragment = new Receipt();
         getFragmentManager().beginTransaction()
@@ -97,9 +96,6 @@ public class Home extends BaseActivity
         viewHolder = new ViewHolder();
         mReactInstanceManager =
                 ((BaseApplication) getApplication()).getReactNativeHost().getReactInstanceManager();
-//        Fragment receiptFragment = new Receipt();
-//        getFragmentManager().beginTransaction()
-//                .add(R.id.content, receiptFragment).commit();
         viewHolder.navigation = (BottomNavigationView) findViewById(R.id.navigation);
     }
 

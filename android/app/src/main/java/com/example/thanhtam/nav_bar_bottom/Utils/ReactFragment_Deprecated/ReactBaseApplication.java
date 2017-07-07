@@ -1,4 +1,4 @@
-package com.example.thanhtam.nav_bar_bottom.Utils.ReactFragment;
+package com.example.thanhtam.nav_bar_bottom.Utils.ReactFragment_Deprecated;
 
 /**
  * Created by thanhtam on 05/07/2017.
