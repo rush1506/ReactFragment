@@ -1,5 +1,6 @@
 package com.example.thanhtam.nav_bar_bottom;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,8 +9,12 @@ import android.view.MenuItem;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.cboy.rn.splashscreen.SplashScreen;
+import com.example.thanhtam.nav_bar_bottom.views.fragments.Customers;
+import com.example.thanhtam.nav_bar_bottom.views.fragments.Management;
 import com.example.thanhtam.nav_bar_bottom.views.fragments.Promotion;
 import com.example.thanhtam.nav_bar_bottom.views.fragments.Receipt;
+import com.example.thanhtam.nav_bar_bottom.views.fragments.Summary;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 
@@ -45,10 +50,19 @@ public class Home extends BaseActivity
                             .add(R.id.content, promotionFragment).commit();
                     return true;
                 case R.id.cutomers:
+                    Fragment customersFragment = new Customers();
+                    getFragmentManager().beginTransaction()
+                            .add(R.id.content, customersFragment).commit();
                     return true;
                 case R.id.summary:
+                    Fragment summaryFragment = new Summary();
+                    getFragmentManager().beginTransaction()
+                            .add(R.id.content, summaryFragment).commit();
                     return true;
                 case R.id.management:
+                    Fragment managementFragment = new Management();
+                    getFragmentManager().beginTransaction()
+                            .add(R.id.content, managementFragment).commit();
                     return true;
             }
             return false;
@@ -66,9 +80,17 @@ public class Home extends BaseActivity
     }
 
     private void initViews() {
+        createHomeFragment();
         viewHolder.content = (FrameLayout) findViewById(R.id.content);
         viewHolder.navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
+    }
+
+    private void createHomeFragment() {
+        SplashScreen.show((Activity) Home.this);
+        Fragment receiptFragment = new Receipt();
+        getFragmentManager().beginTransaction()
+                .add(R.id.content, receiptFragment).commit();
     }
 
     private void findViews() {

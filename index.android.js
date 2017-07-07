@@ -13,6 +13,7 @@ import {
   Button,
   Image
 } from 'react-native';
+import SplashScreen from 'react-native-splash-screen';
 import Modal from "react-native-modalbox";
 import ProgressBar from "./src/loaders/ProgressBar.android";
 
@@ -40,14 +41,30 @@ export class Receipt extends Component {
 
     codePush.sync(
       { updateDialog: updateDialogOptions,
-        installMode: codePush.InstallMode.IMMEDIATE });
+        installMode: codePush.InstallMode.IMMEDIATE },
+        status => {
+        switch (status) {
+          case CodePush.SyncStatus.DOWNLOADING_PACKAGE:
+            SplashScreen.show();
+            break;
+          case CodePush.SyncStatus.INSTALLING_UPDATE:
+            SplashScreen.show();
+            break;
+          case CodePush.SyncStatus.UPDATE_INSTALLED:
+            SplashScreen.hide();
+            break;
+          default:
+             SplashScreen.hide();
+            break;
+        }});
+    SplashScreen.hide();
   }
   render() {
 
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Hóa đơn
+          Hóa đơn Update 2
         </Text>
         <Text style={styles.instructions}>
           To get started, edit index.android.js
@@ -86,7 +103,23 @@ export class Promotion extends Component {
 
     codePush.sync(
       { updateDialog: updateDialogOptions,
-        installMode: codePush.InstallMode.IMMEDIATE });
+        installMode: codePush.InstallMode.IMMEDIATE },
+        status => {
+        switch (status) {
+          case CodePush.SyncStatus.DOWNLOADING_PACKAGE:
+            SplashScreen.show();
+            break;
+          case CodePush.SyncStatus.INSTALLING_UPDATE:
+            SplashScreen.show();
+            break;
+          case CodePush.SyncStatus.UPDATE_INSTALLED:
+            SplashScreen.hide();
+            break;
+          default:
+            SplashScreen.hide();
+            break;
+        }});
+    SplashScreen.hide();
   }
   render() {
 
@@ -114,6 +147,179 @@ export class Promotion extends Component {
   }
 }
 
+export class Customers extends Component {
+
+    constructor(props) {
+    super(props);
+    this.state = {
+      showDownloadingModal: false,
+      showInstalling: false,
+      downloadProgress: 0
+    };
+  }
+
+   componentDidMount() {
+     var updateDialogOptions = {
+        updateTitle: "Update event mới nào",
+        optionalUpdateMessage: "Update nào",
+        optionalIgnoreButtonLabel: "Không update",
+        optionalInstallButtonLabel: "Ok",
+    };
+
+    codePush.sync(
+      { updateDialog: updateDialogOptions,
+        installMode: codePush.InstallMode.IMMEDIATE },
+        status => {
+        switch (status) {
+          case CodePush.SyncStatus.DOWNLOADING_PACKAGE:
+            SplashScreen.show();
+            break;
+          case CodePush.SyncStatus.INSTALLING_UPDATE:
+            SplashScreen.show();
+            break;
+          case CodePush.SyncStatus.UPDATE_INSTALLED:
+            SplashScreen.hide();
+            break;
+          default:
+            SplashScreen.hide();
+            break;
+        }});
+    SplashScreen.hide();    
+  }
+  render() {
+
+    return (
+      <View style={styles.container}>
+        <Text style={styles.welcome}>
+          Khách hàng
+        </Text>
+        <Text style={styles.instructions}>
+          To get started, edit index.android.js
+        </Text>
+        <Text style={styles.instructions}>
+          Double tap R on your keyboard to reload,{'\n'}
+          Shake or press menu button for dev menu
+        </Text>
+      </View>
+    );
+  }
+}
+
+export class Management extends Component {
+
+    constructor(props) {
+    super(props);
+    this.state = {
+      showDownloadingModal: false,
+      showInstalling: false,
+      downloadProgress: 0
+    };
+  }
+
+   componentDidMount() {
+     var updateDialogOptions = {
+        updateTitle: "Update event mới nào",
+        optionalUpdateMessage: "Update nào",
+        optionalIgnoreButtonLabel: "Không update",
+        optionalInstallButtonLabel: "Ok",
+    };
+
+    codePush.sync(
+      { updateDialog: updateDialogOptions,
+        installMode: codePush.InstallMode.IMMEDIATE },
+        status => {
+        switch (status) {
+          case CodePush.SyncStatus.DOWNLOADING_PACKAGE:
+            SplashScreen.show();
+            break;
+          case CodePush.SyncStatus.INSTALLING_UPDATE:
+            SplashScreen.show();
+            break;
+          case CodePush.SyncStatus.UPDATE_INSTALLED:
+            SplashScreen.hide();
+            break;
+          default:
+            SplashScreen.hide();
+            break;
+        }});
+    SplashScreen.hide();
+  }
+  render() {
+
+    return (
+      <View style={styles.container}>
+        <Text style={styles.welcome}>
+          Quản lý
+        </Text>
+        <Text style={styles.instructions}>
+          To get started, edit index.android.js
+        </Text>
+        <Text style={styles.instructions}>
+          Double tap R on your keyboard to reload,{'\n'}
+          Shake or press menu button for dev menu
+        </Text>
+      </View>
+    );
+  }
+}
+
+export class Summary extends Component {
+
+    constructor(props) {
+    super(props);
+    this.state = {
+      showDownloadingModal: false,
+      showInstalling: false,
+      downloadProgress: 0
+    };
+  }
+
+   componentDidMount() {
+     var updateDialogOptions = {
+        updateTitle: "Update event mới nào",
+        optionalUpdateMessage: "Update nào",
+        optionalIgnoreButtonLabel: "Không update",
+        optionalInstallButtonLabel: "Ok",
+    };
+
+    codePush.sync(
+      { updateDialog: updateDialogOptions,
+        installMode: codePush.InstallMode.IMMEDIATE },
+        status => {
+        switch (status) {
+          case CodePush.SyncStatus.DOWNLOADING_PACKAGE:
+            SplashScreen.show();
+            break;
+          case CodePush.SyncStatus.INSTALLING_UPDATE:
+            SplashScreen.show();
+            break;
+          case CodePush.SyncStatus.UPDATE_INSTALLED:
+            SplashScreen.hide();
+            break;
+          default:
+            SplashScreen.hide();
+            break;
+        }});
+    SplashScreen.hide();
+  }
+  render() {
+
+    return (
+      <View style={styles.container}>
+        <Text style={styles.welcome}>
+          Thống kê
+        </Text>
+        <Text style={styles.instructions}>
+          To get started, edit index.android.js
+        </Text>
+        <Text style={styles.instructions}>
+          Double tap R on your keyboard to reload,{'\n'}
+          Shake or press menu button for dev menu
+        </Text>
+      </View>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   container_modal: {
@@ -148,5 +354,8 @@ const styles = StyleSheet.create({
 
 AppRegistry.registerComponent('Receipt', () => Receipt);
 AppRegistry.registerComponent('Promotion', () => Promotion);
+AppRegistry.registerComponent('Customers', () => Customers);
+AppRegistry.registerComponent('Management', () => Management);
+AppRegistry.registerComponent('Summary', () => Summary);
 
 

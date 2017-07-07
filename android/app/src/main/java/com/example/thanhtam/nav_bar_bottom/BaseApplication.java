@@ -2,6 +2,7 @@ package com.example.thanhtam.nav_bar_bottom;
 
 import android.app.Application;
 
+import com.cboy.rn.splashscreen.SplashScreenReactPackage;
 import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -34,6 +35,7 @@ public class BaseApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+              new SplashScreenReactPackage(),
             new CodePush("iJrB6zqAXoDvSoaRB63FL2ITyqHsa0a54359-d62b-4e63-92bc-c307f1c17628"
             , getApplicationContext(), BuildConfig.DEBUG)
       );

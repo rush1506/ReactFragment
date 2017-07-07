@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import com.cboy.rn.splashscreen.SplashScreen;
 import com.example.thanhtam.nav_bar_bottom.BaseApplication;
 import com.facebook.react.BuildConfig;
 import com.facebook.react.ReactInstanceManager;
@@ -51,6 +52,7 @@ public abstract class ReactBaseFragment  extends Fragment {
     @Override
     public ReactRootView onCreateView(LayoutInflater inflater, ViewGroup group, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        SplashScreen.show(getActivity());  // here
         mReactRootView = new ReactRootView(((BaseApplication) getActivity().getApplication())
                 .getApplicationContext());
         mReactInstanceManager =
@@ -79,22 +81,22 @@ public abstract class ReactBaseFragment  extends Fragment {
 //         if (mReactInstanceManager == null) {
 //             Log.d("ReactBaseFragment", "ReactInstanceManager: null");
 //         }
-         mReactRootView.startReactApplication(
-                 mReactInstanceManager,
-                 getMainComponentName(),
-                 null
-         );
+//         mReactRootView.startReactApplication(
+//                 mReactInstanceManager,
+//                 getMainComponentName(),
+//                 null
+//         );
 //         findViews();
-//       try {
-//           mReactRootView.startReactApplication(
-//                   mReactInstanceManager,
-//                   getMainComponentName(),
-//                   null
-//           );
-//           findViews();
-//       } catch (Exception e) {
-//           Log.d("mReactRootView", "onActivityCreated: Cannot start react application");
-//       }
+       try {
+           mReactRootView.startReactApplication(
+                   mReactInstanceManager,
+                   getMainComponentName(),
+                   null
+           );
+           findViews();
+       } catch (Exception e) {
+           Log.d("mReactRootView", "onActivityCreated: Cannot start react application");
+       }
     }
 
     private void findViews() {
