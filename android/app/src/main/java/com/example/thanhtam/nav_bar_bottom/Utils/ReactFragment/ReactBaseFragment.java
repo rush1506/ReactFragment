@@ -24,6 +24,7 @@ public abstract class ReactBaseFragment  extends Fragment {
 
     // This method returns the name of our top-level component to show
     public abstract String getMainComponentName();
+    public abstract Bundle getInitialBundle();
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -51,7 +52,7 @@ public abstract class ReactBaseFragment  extends Fragment {
            mReactRootView.startReactApplication(
                    mReactInstanceManager,
                    getMainComponentName(),
-                   null
+                   getInitialBundle()
            );
            findViews();
        } catch (NullPointerException e) {
