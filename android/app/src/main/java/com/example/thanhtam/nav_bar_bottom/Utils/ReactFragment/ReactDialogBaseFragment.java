@@ -8,7 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.example.thanhtam.nav_bar_bottom.BaseApplication;
+import com.example.thanhtam.nav_bar_bottom.BaseApplicationFragment;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactRootView;
 
@@ -34,10 +34,10 @@ public abstract class ReactDialogBaseFragment extends DialogFragment {
     @Override
     public ReactRootView onCreateView(LayoutInflater inflater, ViewGroup group, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mReactRootView = new ReactRootView(((BaseApplication) getActivity().getApplication())
+        mReactRootView = new ReactRootView(((BaseApplicationFragment) getActivity().getApplication())
                 .getApplicationContext());
         mReactInstanceManager =
-                ((BaseApplication) getActivity().getApplication())
+                ((BaseApplicationFragment) getActivity().getApplication())
                         .getReactNativeHost()
                         .getReactInstanceManager();
         return mReactRootView;

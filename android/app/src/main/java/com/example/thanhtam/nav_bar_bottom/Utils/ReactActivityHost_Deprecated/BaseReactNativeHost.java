@@ -1,4 +1,4 @@
-package com.example.thanhtam.nav_bar_bottom.Utils.ReactFragment_Deprecated;
+package com.example.thanhtam.nav_bar_bottom.Utils.ReactActivityHost_Deprecated;
 
 import android.app.Application;
 import android.content.Context;

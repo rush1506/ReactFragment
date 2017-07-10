@@ -16,7 +16,7 @@ import java.util.List;
  * Created by thanhtam on 05/07/2017.
  */
 
-public class BaseApplication extends Application implements ReactApplication {
+public class BaseApplicationFragment extends Application implements ReactApplication {
 
     private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
 

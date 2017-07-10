@@ -6,7 +6,6 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
-import android.widget.TextView;
 
 import com.example.thanhtam.nav_bar_bottom.views.fragments.Customers;
 import com.example.thanhtam.nav_bar_bottom.views.fragments.Management;
@@ -83,7 +82,7 @@ public class Home extends BaseActivity
     private void findViews() {
         viewHolder = new ViewHolder();
         mReactInstanceManager =
-                ((BaseApplication) getApplication()).getReactNativeHost().getReactInstanceManager();
+                ((BaseApplicationFragment) getApplication()).getReactNativeHost().getReactInstanceManager();
         viewHolder.navigation = (BottomNavigationView) findViewById(R.id.navigation);
     }
 
