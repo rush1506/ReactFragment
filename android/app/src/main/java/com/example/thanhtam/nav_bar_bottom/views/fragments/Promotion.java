@@ -1,5 +1,7 @@
 package com.example.thanhtam.nav_bar_bottom.views.fragments;
 
+import android.os.Bundle;
+
 import com.example.thanhtam.nav_bar_bottom.Utils.ReactFragment.ReactBaseFragment;
 
 /**
@@ -10,5 +12,10 @@ public class Promotion extends ReactBaseFragment {
     @Override
     public String getMainComponentName() {
         return "Promotion";
+    }
+
+    @Override
+    public Bundle getInitialBundle() {
+        return null;
     }
 }
